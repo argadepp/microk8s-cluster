@@ -8,7 +8,7 @@ module "ec2_instance" {
   spot_type            = "persistent"
   ami                  = data.aws_ami.ubuntu.id
   instance_type        = var.instType
-  key_name             = aws_key_pair.helm_key.key_name
+  key_name             = "gaction1"
 
   root_block_device = [
     {
