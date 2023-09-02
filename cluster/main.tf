@@ -1,3 +1,3 @@
 module "master" {
-  source = "master.tf"
+  source = "./master"
 }
