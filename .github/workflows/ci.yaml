@@ -7,9 +7,9 @@ on:
         type: environment
         description: Select the environment
         options:
-          - "dev"
-          - "stage"
-          - "prod"
+          - dev
+          - stage
+          - prod
       boolean:
         type: boolean
         description: True or False
