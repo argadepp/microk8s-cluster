@@ -21,10 +21,12 @@ jobs:
         tf_actions_subcommand: 'init'
         tf_actions_working_dir: 'cluster'
         tf_actions_comment: true
+        args: '-var-file="terraform.tfvars"'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        
 
     - name: 'Terraform Validate'
       uses: hashicorp/terraform-github-actions@master
@@ -33,14 +35,12 @@ jobs:
         tf_actions_subcommand: 'validate'
         tf_actions_working_dir: 'cluster'
         tf_actions_comment: true
+        args: '-var-file="terraform.tfvars"'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        TF_VAR_product: "DevOpsTeach"  
-        TF_VAR_env: "dev"
-        TF_VAR_instType: "t2.medium"
-        TF_CLI_CONFIG_FILE: ${{ github.workspace }}/cluster/terrform.tfvars       
+
     - name: 'Terraform Plan'
       uses: hashicorp/terraform-github-actions@master
       with:
@@ -48,14 +48,12 @@ jobs:
         tf_actions_subcommand: 'plan'
         tf_actions_working_dir: 'cluster'
         tf_actions_comment: true
+        args: '-var-file="terraform.tfvars"'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        TF_CLI_CONFIG_FILE: ${{ github.workspace }}/cluster/terrform.tfvars 
-        TF_VAR_product: "DevOpsTeach"  
-        TF_VAR_env: "dev"
-        TF_VAR_instType: "t2.medium"        
+    
 
     - name: 'Terraform Apply'
       uses: hashicorp/terraform-github-actions@master
@@ -64,11 +62,9 @@ jobs:
         tf_actions_subcommand: 'apply'
         tf_actions_working_dir: 'cluster'
         tf_actions_comment: true
+        args: '-var-file="terraform.tfvars"'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        TF_CLI_CONFIG_FILE: ${{ github.workspace }}/cluster/terrform.tfvars     
-        TF_VAR_product: "DevOpsTeach"  
-        TF_VAR_env: "dev"
-        TF_VAR_instType: "t2.medium"        
+      
