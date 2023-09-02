@@ -6,16 +6,20 @@ on:
       environment:
         type: environment
         description: Select the environment
+        options:
+          - "dev"
+          - "stage"
+          - "prod"
       boolean:
         type: boolean
         description: True or False
       choice:
         type: choice
-        description: Make a choice
+        description: Product
         options:
-        - foo
-        - bar
-        - baz
+        - DevOpsTeach
+        - DevOpsTeach1
+        - DevOpsTeach2
 jobs:
   build:
     runs-on: ubuntu-latest
