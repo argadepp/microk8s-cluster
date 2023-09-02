@@ -16,9 +16,9 @@ on:
         - DevOpsTeach
         - DevOpsTeach1
         - DevOpsTeach2
-  push:
-    branches:
-      - dev
+  # push:
+  #   branches:
+  #     - dev
 
 jobs:
   tf_fmt:
