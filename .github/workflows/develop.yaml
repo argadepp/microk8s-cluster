@@ -1,6 +1,21 @@
 name: Deploy Infrastructure
 
 on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Select the environment
+      boolean:
+        type: boolean
+        description: True or False
+      choice:
+        type: choice
+        description: Product
+        options:
+        - DevOpsTeach
+        - DevOpsTeach1
+        - DevOpsTeach2
   push:
     branches:
       - dev
