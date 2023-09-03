@@ -82,6 +82,7 @@ jobs:
         tf_actions_subcommand: 'destroy'
         tf_actions_working_dir: 'controleplane/cluster'
         tf_actions_comment: true
+        args: '-var="env=dev" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
