@@ -41,7 +41,7 @@ jobs:
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: 'init'
-        tf_actions_working_dir: 'cluster'
+        tf_actions_working_dir: 'controleplane/cluster'
         tf_actions_comment: true
 
       env:
@@ -68,7 +68,7 @@ jobs:
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: 'plan'
-        tf_actions_working_dir: 'cluster'
+        tf_actions_working_dir: 'controleplane/cluster'
         tf_actions_comment: true
         args: '-var="env=dev" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }}"'
       env:
@@ -82,7 +82,7 @@ jobs:
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: 'apply'
-        tf_actions_working_dir: 'cluster'
+        tf_actions_working_dir: 'controleplane/cluster'
         tf_actions_comment: true
         args: '-var="env=dev" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }}"'
       env:
