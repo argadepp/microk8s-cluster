@@ -1,0 +1,46 @@
+name: Destroy
+
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        type: choice
+        description: Select the region
+        options:
+          - ap-south-1
+          - us-east-1
+          - ap-east-1
+      product:
+        type: choice
+        description: Product
+        options:
+        - DevOpsTeach
+        - DevOpsTeach1
+        - DevOpsTeach2
+      InstanceType:
+        type: choice
+        description: Select the instance type
+        options:
+          - t2.medium
+          - t3.medium
+jobs:
+
+  tf_fmt:
+    name: Create Masterplane
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout Repo
+      uses: actions/checkout@v1
+        
+    - name: 'Terraform Destroy'
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 1.4.0
+        tf_actions_subcommand: 'destroy'
+        tf_actions_working_dir: 'controleplane/cluster'
+        tf_actions_comment: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
+        AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
