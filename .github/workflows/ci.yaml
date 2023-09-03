@@ -82,7 +82,7 @@ jobs:
     #     AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 
-    - name: 'Terraform Action'
+    - name: 'Terraform ${{ inputs.action }}'
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 1.4.0
