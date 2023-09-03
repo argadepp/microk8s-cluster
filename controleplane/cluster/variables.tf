@@ -1,5 +1,5 @@
 
-variable "regiom" {
+variable "region" {
   type = string
 }
 variable "product" {
