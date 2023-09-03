@@ -68,20 +68,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 
-    # - name: 'Terraform Apply'
-    #   uses: hashicorp/terraform-github-actions@master
-    #   with:
-    #     tf_actions_version: 1.4.0
-    #     tf_actions_subcommand: 'apply'
-    #     tf_actions_working_dir: 'controleplane/cluster'
-    #     tf_actions_comment: true
-    #     args: '-var="env=dev" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }} -var="region=${{ inputs.region }}"'
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
-    #     AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
-
     - name: 'Terraform ${{ inputs.action }}'
       uses: hashicorp/terraform-github-actions@master
       with:

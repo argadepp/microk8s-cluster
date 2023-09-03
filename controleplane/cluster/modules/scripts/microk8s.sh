@@ -29,5 +29,3 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 wget https://get.helm.sh/helm-v3.11.2-linux-amd64.tar.gz
 tar -xvzf helm-v3.11.2-linux-amd64.tar.gz
 sudo cp linux-amd64/helm /usr/bin/helm
-
-helm repo add argo https://argoproj.github.io/argo-helm
