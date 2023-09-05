@@ -21,6 +21,6 @@ output "test" {
   value = data.aws_ami.ubuntu
 }
 
-data "external" "microk8s_script" {
-  program = ["cat", "../script/microk8s.sh"]
-}
+# data "external" "microk8s_script" {
+#   program = ["cat", "../script/microk8s.sh"]
+# }
