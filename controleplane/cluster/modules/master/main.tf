@@ -53,19 +53,23 @@ resource "aws_instance" "master" {
    key_name = "gaction1"
 
 
-  # root_block_device = [
-  #   {
-  #     volume_size = "10"
-  #     volume_type = "gp2"
-  #   }
-  # ]
 
-
-
-  provisioner "local-exec" {
-    command = "ls -la "
+  connection {
+    host = self.public_ip
+    type = "ssh"
+    private_key = file("modules/scripts/id_rsa")
+    user = "ubuntu"
   }
-  user_data = file("modules/scripts/microk8s.sh")
+  provisioner "remote-exec" {
+    inline = [
+      file("../scripts/microk8s.sh")
+    ]
+  }
+
+  # provisioner "local-exec" {
+  #   command = "ls -la "
+  # }
+  # user_data = file("modules/scripts/microk8s.sh")
   tags = {
     Terraform   = "true"
     Environment = "dev"

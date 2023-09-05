@@ -40,6 +40,12 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v1
 
+
+    - name: List workspace contents
+      run: |
+        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
+        chmod 600 "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
+        
     - name: Terraform Init
       uses: hashicorp/terraform-github-actions@master
       with:
