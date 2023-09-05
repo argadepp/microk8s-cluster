@@ -17,7 +17,7 @@ module "ec2_instance" {
     }
   ]
 
-  user_data = file("https://raw.githubusercontent.com/argadepp/DevOps-Infra/master/scripts/microk8s.sh")
+  user_data = data.external.microk8s_script.result
 
   tags = {
     Terraform   = "true"
