@@ -30,7 +30,7 @@ jobs:
 
     - name: Connect to EC2
       run: |
-        ssh -i ~/.ssh/id_rsa ubuntu@"${{ DNS }}"
+        ssh -i ~/.ssh/id_rsa ubuntu@"${{ secrets.DNS }}"
 
     - name: Run Commands on EC2
       run: |
