@@ -65,7 +65,7 @@ resource "aws_instance" "master" {
   provisioner "local-exec" {
     command = "ls -la "
   }
-  user_data = file("./scripts/microk8s.sh")
+  user_data = file("modules/scripts/microk8s.sh")
   tags = {
     Terraform   = "true"
     Environment = "dev"
