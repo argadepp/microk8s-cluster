@@ -17,7 +17,7 @@ module "ec2_instance" {
     }
   ]
 
-  user_data = file("../script/microk8s.sh")
+  user_data = data.external.microk8s_script.result
 
   tags = {
     Terraform   = "true"
