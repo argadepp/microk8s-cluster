@@ -32,9 +32,5 @@ jobs:
     - name: Connect to EC2
       run: |
         ssh -i ~/.ssh/id_rsa ubuntu@"${{ secrets.DNS }}"
-
-    - name: Run Commands on EC2
-      run: |
-        # Replace these commands with the actual commands you want to run
-        echo "Hello from GitHub Actions"
         kubectl get po -A
+        
