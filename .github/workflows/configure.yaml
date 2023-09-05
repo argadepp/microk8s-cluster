@@ -2,7 +2,11 @@ name: Connect to EC2 and Run Commands
 
 on:
   workflow_dispatch:
-
+      action:
+        type: choice
+        description: Connect
+        options:
+          - connect
 jobs:
   deploy:
     runs-on: ubuntu-latest
