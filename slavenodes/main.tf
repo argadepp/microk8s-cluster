@@ -1,3 +1,3 @@
 module "controle-plane" {
-  source = "./modules/master"
+  source = "./modules/slaves"
 }
