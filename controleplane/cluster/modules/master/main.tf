@@ -62,7 +62,7 @@ resource "aws_instance" "master" {
   }
   provisioner "remote-exec" {
     inline = [
-      file("../scripts/microk8s.sh")
+      file("modules/scripts/microk8s.sh")
     ]
   }
 
