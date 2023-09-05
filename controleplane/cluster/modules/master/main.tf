@@ -17,7 +17,7 @@ module "ec2_instance" {
     }
   ]
 
-user_data = file("${path.module}/../script/microk8s.sh")
+user_data = file("${path.module}/../scripts/microk8s.sh")
 
   # connection {
   #   host = self.public_ip
