@@ -44,7 +44,7 @@ jobs:
     - name: List workspace contents
       run: |
         ls -R
-        cat "${{ github.workspace }}/controleplane/cluster/modules/master/scripts/microk8s.sh"
+        cat "${{ github.workspace }}/microk8s.sh"
 
     - name: Terraform Init
       uses: hashicorp/terraform-github-actions@master
