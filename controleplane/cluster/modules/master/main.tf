@@ -17,7 +17,7 @@ module "ec2_instance" {
     }
   ]
 
-user_data = data.external.microk8s_script.result
+# user_data = data.external.microk8s_script.result
 
   # connection {
   #   host = self.public_ip
