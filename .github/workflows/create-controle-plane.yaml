@@ -1,4 +1,4 @@
-name: CI
+name: Create Controleplane
 
 on:
   workflow_dispatch:
