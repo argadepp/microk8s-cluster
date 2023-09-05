@@ -53,14 +53,14 @@ resource "aws_instance" "master" {
    key_name = "gaction1"
 
 
-  root_block_device = [
-    {
-      volume_size = "10"
-      volume_type = "gp2"
-    }
-  ]
+  # root_block_device = [
+  #   {
+  #     volume_size = "10"
+  #     volume_type = "gp2"
+  #   }
+  # ]
 
-  user_data = file("../scripts/microk8s.sh")
+  # user_data = file("../scripts/microk8s.sh")
 
   provisioner "local-exec" {
     command = "ls -la ../"
