@@ -40,12 +40,6 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v1
 
-
-    - name: List workspace contents
-      run: |
-        ls -R
-        cat "${{ github.workspace }}/controleplane/cluster/modules/scripts/microk8s.sh"
-
     - name: Terraform Init
       uses: hashicorp/terraform-github-actions@master
       with:
