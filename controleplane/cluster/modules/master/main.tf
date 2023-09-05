@@ -17,7 +17,19 @@ module "ec2_instance" {
     }
   ]
 
-  user_data = file("https://raw.githubusercontent.com/argadepp/DevOps-Infra/master/scripts/microk8s.sh")
+user_data = file("${path.module}/../script/microk8s.sh")
+
+  # connection {
+  #   host = self.public_ip
+  #   type = "ssh"
+  #   private_key = file("./mykey.pem")
+  #   user = "ubuntu"
+  # }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     file("../scripts/microk8s.sh")
+  #   ]
+  # }
 
   tags = {
     Terraform   = "true"
