@@ -32,4 +32,10 @@ jobs:
     - name: Connect to EC2
       run: |
         ssh -i ~/.ssh/id_rsa ubuntu@"${{ secrets.DNS }}"
-        sudo cat /var/snap/microk8s/current/certs/csr.conf.template        
+
+    - name: Run Commands on EC2
+      run: |
+        # Replace these commands with the actual commands you want to run
+        sudo cat /var/snap/microk8s/current/certs/csr.conf.template
+
+        
