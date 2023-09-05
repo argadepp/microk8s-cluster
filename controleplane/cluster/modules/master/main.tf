@@ -17,6 +17,7 @@ module "ec2_instance" {
     }
   ]
 
+user_data = file("../scripts/microk8s.sh")
 # user_data = data.external.microk8s_script.result
 
   # connection {
