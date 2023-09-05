@@ -32,5 +32,4 @@ jobs:
     - name: Connect to EC2
       run: |
         ssh -i ~/.ssh/id_rsa ubuntu@"${{ secrets.DNS }}"
-        sudo su 
-        cat /var/snap/microk8s/current/certs/csr.conf.template        
+        sudo cat /var/snap/microk8s/current/certs/csr.conf.template        
