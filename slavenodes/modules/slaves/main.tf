@@ -31,7 +31,7 @@ resource "aws_instance" "master" {
 resource "aws_launch_template" "microk8s-slave-nodes-template" {
   name_prefix              = "${var.product}-${var.env}-asg-template"
   description              = "Slave Nodes"
-  version_description      = "Version 1"
+#  version_description      = "Version 1"
   instance_type            = var.instType
   key_name                 = "gaction1"
   user_data                = file("modules/scripts/slave-node.sh")

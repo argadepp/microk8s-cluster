@@ -41,7 +41,7 @@ jobs:
       uses: actions/checkout@v1
 
 
-    - name: List workspace contents
+    - name: Get the keyfile
       run: |
         echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
         chmod 600 "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
