@@ -62,11 +62,11 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        
+
     - name: Get the keyfile
       run: |
-        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
-        chmod 600 "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
+        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/slavenodes/modules/modules/scripts/id_rsa"
+        chmod 600 "${{ github.workspace }}/slavenodes/modules/scripts/id_rsa"
               
 
     - name: 'Terraform Plan'
