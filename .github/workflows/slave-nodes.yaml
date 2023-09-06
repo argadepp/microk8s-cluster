@@ -65,7 +65,7 @@ jobs:
 
     - name: Get the keyfile
       run: |
-        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/slavenodes/modules/modules/scripts/id_rsa"
+        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/slavenodes/modules/scripts/id_rsa"
         chmod 600 "${{ github.workspace }}/slavenodes/modules/scripts/id_rsa"
               
 
