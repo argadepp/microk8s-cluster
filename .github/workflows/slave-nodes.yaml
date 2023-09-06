@@ -43,7 +43,7 @@ on:
 jobs:
 
   tf_fmt:
-    name: Create Masterplane
+    name: Join Slave Nodes To cluster
     runs-on: ubuntu-latest
     steps:
 
