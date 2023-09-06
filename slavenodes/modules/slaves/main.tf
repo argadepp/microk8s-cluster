@@ -34,19 +34,19 @@ resource "aws_launch_template" "microk8s-slave-nodes-template" {
 #  version_description      = "Version 1"
   instance_type            = var.instType
   key_name                 = "gaction1"
-#  user_data                = file("modules/scripts/slave-node.sh")
+  user_data                = base64encode(file("modules/scripts/slave-node.sh"))
 
-  connection {
-    host = self.public_ip
-    type = "ssh"
-    private_key = file("modules/scripts/id_rsa")
-    user = "ubuntu"
-  }
-  provisioner "remote-exec" {
-    inline = [
-      file("modules/scripts/slave-node.sh")
-    ]
-  }
+  # connection {
+  #   host = self.public_ip
+  #   type = "ssh"
+  #   private_key = file("modules/scripts/id_rsa")
+  #   user = "ubuntu"
+  # }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     file("modules/scripts/slave-node.sh")
+  #   ]
+  # }
 
 
 
