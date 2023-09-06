@@ -1,11 +1,40 @@
 
-resource "aws_instance" "master" {
+# resource "aws_instance" "master" {
   
-   ami = data.aws_ami.ubuntu.id
-   instance_type = var.instType
-   key_name = "gaction1"
+#    ami = data.aws_ami.ubuntu.id
+#    instance_type = var.instType
+#    key_name = "gaction1"
 
 
+
+#   connection {
+#     host = self.public_ip
+#     type = "ssh"
+#     private_key = file("modules/scripts/id_rsa")
+#     user = "ubuntu"
+#   }
+#   provisioner "remote-exec" {
+#     inline = [
+#       file("modules/scripts/microk8s.sh")
+#     ]
+#   }
+
+#   tags = {
+#     Terraform   = "true"
+#     Environment = "dev"
+#     Name        = "${var.product}-${var.env}-master-ec2"
+#   }
+
+
+# }
+
+resource "aws_launch_template" "microk8s-slave-nodes-template" {
+  name_prefix              = "${var.product}-${var.env}-asg-template"
+  description              = "Slave Nodes"
+#  version_description      = "Version 1"
+  instance_type            = var.instType
+  key_name                 = "gaction1"
+#  user_data                = file("modules/scripts/slave-node.sh")
 
   connection {
     host = self.public_ip
@@ -15,26 +44,11 @@ resource "aws_instance" "master" {
   }
   provisioner "remote-exec" {
     inline = [
-      file("modules/scripts/microk8s.sh")
+      file("modules/scripts/slave-node.sh")
     ]
   }
 
-  tags = {
-    Terraform   = "true"
-    Environment = "dev"
-    Name        = "${var.product}-${var.env}-master-ec2"
-  }
 
-
-}
-
-resource "aws_launch_template" "microk8s-slave-nodes-template" {
-  name_prefix              = "${var.product}-${var.env}-asg-template"
-  description              = "Slave Nodes"
-#  version_description      = "Version 1"
-  instance_type            = var.instType
-  key_name                 = "gaction1"
-  user_data                = file("modules/scripts/slave-node.sh")
 
   # You can specify additional instance configuration here
 
