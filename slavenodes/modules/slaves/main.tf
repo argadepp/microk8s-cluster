@@ -35,7 +35,7 @@ resource "aws_launch_template" "microk8s-slave-nodes-template" {
   instance_type            = var.instType
   key_name                 = "gaction1"
   user_data                = base64encode(file("modules/scripts/slave-node.sh"))
-
+  image_id = data.aws_ami.ubuntu.id
   # connection {
   #   host = self.public_ip
   #   type = "ssh"
@@ -66,6 +66,7 @@ resource "aws_autoscaling_group" "microk8s-asg" {
     id                       = aws_launch_template.microk8s-slave-nodes-template.id
     version                  = "$Latest"
   }
+  
   min_size                  = var.min
   max_size                  = var.max
   desired_capacity          = var.dz
