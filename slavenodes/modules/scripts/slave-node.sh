@@ -10,7 +10,7 @@ sudo userdmod -aG docker ubuntu
 
 sudo snap install microk8s --classic --channel 1.22-eksd/stable
 
-sudo microk8s join 172.31.0.42:25000/81affa0eeac5b2a5740fcca60b538c31/6db437d4203e
+sudo microk8s join 172.31.42.73:25000/3a8ea23dde1d1a86f05578e0467149e5/ae689ce8f464
  
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
