@@ -8,7 +8,7 @@ sudo chmod 777 /var/run/docker.sock
 
 sudo userdmod -aG docker ubuntu
 
-sudo snap install microk8s --classic --channel 1.22-eksd/stable
+sudo snap install microk8s --classic --channel 1.24-eksd/stable
 
 sudo microk8s start
 sudo microk8s enable metallb:192.168.1.200-192.168.1.220
