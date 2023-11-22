@@ -18,12 +18,13 @@ on:
           - us-east-1
           - ap-east-1
       product:
-        type: choice
+        # type: choice
         description: Product
-        options:
-        - DevOpsTeach
-        - DevOpsTeach1
-        - DevOpsTeach2
+        default: pdt
+        # options:
+        # - DevOpsTeach
+        # - DevOpsTeach1
+        # - DevOpsTeach2
       InstanceType:
         type: choice
         description: Select the instance type
