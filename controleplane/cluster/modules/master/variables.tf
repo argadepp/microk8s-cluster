@@ -1,6 +1,6 @@
 variable "product" {
  type = string  
-
+ default = "DevopsTech"
 }
 
 variable "env" {
@@ -10,4 +10,5 @@ variable "env" {
 
 variable "instType" {
     type = string
+    default = "t2.large"
 }
