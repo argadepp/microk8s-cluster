@@ -14,5 +14,5 @@ variable "env" {
 
 variable "instType" {
     type = string
-    default = "t2.medium"
+
 }
