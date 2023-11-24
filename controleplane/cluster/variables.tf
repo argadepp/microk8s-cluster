@@ -4,7 +4,6 @@ variable "region" {
 }
 variable "product" {
  type = string  
- default = "DevOpsTechs"
 }
 
 variable "env" {
