@@ -32,6 +32,7 @@ on:
           - t2.medium
           - t3.xlarge
           - t3.medium
+          - t2.large
 jobs:
 
   tf_fmt:
