@@ -48,7 +48,11 @@ jobs:
       run: |
         echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
         chmod 600 "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
-        
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::734522607489:role/github-action
+        aws-region: ap-south-1       
     - name: Terraform Init
       uses: hashicorp/terraform-github-actions@master
       with:
