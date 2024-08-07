@@ -9,7 +9,7 @@ resource "aws_instance" "controle-plane" {
     host = self.public_ip
   }
   provisioner "remote-exec" {
-    inline = [ file("scripts/microk8s.sh") ]
+    inline = [ file("modules/scripts/microk8s.sh") ]
   }
   root_block_device {
     volume_type = "gp3"
