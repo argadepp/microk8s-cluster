@@ -5,11 +5,11 @@ resource "aws_instance" "controle-plane" {
   connection {
     user = "ubuntu"
     type = "ssh"
-    private_key = file("modules/scripts/id_rsa")
+    private_key = file("scripts/id_rsa")
     host = self.public_ip
   }
   provisioner "remote-exec" {
-    inline = [ file("modules/scripts/microk8s.sh") ]
+    inline = [ file("scripts/microk8s.sh") ]
   }
   root_block_device {
     volume_type = "gp3"
