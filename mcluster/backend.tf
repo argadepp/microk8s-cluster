@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-backend-pratik"
+    bucket = "devoptech-dev-terraform-backend"
     key    = "cluster/controller.tfstate"
     region = "ap-south-1"
   }

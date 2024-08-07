@@ -5,7 +5,7 @@ resource "aws_instance" "controle-plane" {
   connection {
     user = "ubuntu"
     type = "ssh"
-    private_key = "modules/scripts/id_rsa"
+    private_key = file("modules/scripts/id_rsa")
     host = self.public_ip
   }
   provisioner "remote-exec" {
