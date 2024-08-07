@@ -23,3 +23,5 @@ jobs:
       - name: Deploy application
         run: |
           aws s3 ls
+      - name: Print AWS caller identity
+        run: aws sts get-caller-identity    
