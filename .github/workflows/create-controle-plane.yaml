@@ -25,6 +25,15 @@ on:
         # - DevOpsTeach
         # - DevOpsTeach1
         # - DevOpsTeach2
+      environment:
+        type: choice
+        description: environment
+        default: dev 
+        options:
+          - dev
+          - qa
+          - stage
+          - prod
       InstanceType:
         type: choice
         description: Select the instance type
