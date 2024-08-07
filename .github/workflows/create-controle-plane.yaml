@@ -85,7 +85,7 @@ jobs:
         tf_actions_subcommand: 'plan'
         tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
-        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
+        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -99,7 +99,7 @@ jobs:
         tf_actions_subcommand: ${{ inputs.action }}
         tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
-        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
+        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
         AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
