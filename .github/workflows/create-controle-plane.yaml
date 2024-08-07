@@ -46,19 +46,19 @@ jobs:
 
     - name: Get the keyfile
       run: |
-        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
-        chmod 600 "${{ github.workspace }}/controleplane/cluster/modules/scripts/id_rsa"
+        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/scripts/id_rsa"
+        chmod 600 "${{ github.workspace }}/scripts/id_rsa"
     - name: Configure AWS credentials from Test account
       uses: aws-actions/configure-aws-credentials@v4
       with:
-        role-to-assume: arn:aws:iam::734522607489:role/github-action
+        role-to-assume: arn:aws:iam::637423592422:role/git-action-deploy-role
         aws-region: ap-south-1       
     - name: Terraform Init
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: 'init'
-        tf_actions_working_dir: 'controleplane/cluster'
+        tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
 
       env:
@@ -72,7 +72,7 @@ jobs:
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: 'plan'
-        tf_actions_working_dir: 'controleplane/cluster'
+        tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
         args: '-var="env=dev" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
       env:
@@ -86,7 +86,7 @@ jobs:
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: ${{ inputs.action }}
-        tf_actions_working_dir: 'controleplane/cluster'
+        tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
         args: '-var="env=dev" -var="product=${{ inputs.product }}" -var="instType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
       env:
