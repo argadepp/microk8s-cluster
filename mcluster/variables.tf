@@ -28,4 +28,5 @@ variable "max" {
 
 variable "zones" {
   type = list(string)
+
 }
