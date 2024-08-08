@@ -25,8 +25,3 @@ variable "desired" {
 variable "max" {
   
 }
-
-variable "zones" {
-  type = list(string)
-  default = [ "ap-south-1a","ap-south-1b" ]
-}
