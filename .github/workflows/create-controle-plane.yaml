@@ -1,4 +1,4 @@
-name: Create Controleplane
+name: Create Control Plane
 permissions:
   id-token: write
   contents: read
@@ -20,13 +20,8 @@ on:
           - us-east-1
           - ap-east-1
       product:
-        # type: choice
         description: Product
         default: pdt
-        # options:
-        # - DevOpsTeach
-        # - DevOpsTeach1
-        # - DevOpsTeach2
       environment:
         type: choice
         description: environment
@@ -46,27 +41,23 @@ on:
           - t2.large
       minsize:
         type: number
-        description: Min size of asg      
+        description: Min size of ASG      
       desiresize:
         type: number
-        description: Desired size of asg 
+        description: Desired size of ASG 
       maxsize:
         type: number
-        description: Max size of asg    
+        description: Max size of ASG    
       zones:
         type: string
-        description: Zones for asgs                       
+        description: Zones for ASGs (comma-separated)                       
 jobs:
-
   tf_fmt:
     name: Create Masterplane
     runs-on: ubuntu-latest
     steps:
-
     - name: Checkout Repo
       uses: actions/checkout@v1
-
-
     - name: Get the keyfile
       run: |
         echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/mcluster/scripts/id_rsa"
@@ -83,24 +74,35 @@ jobs:
         tf_actions_subcommand: 'init'
         tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
-    
-
-    - name: 'Terraform Plan'
+    - name: Terraform Plan
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: 'plan'
         tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
-        args: '-var="environment=${{ inputs.environment }}" -var="zones=${{ inputs.zones }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}" -var="min=${{ inputs.minsize }}" -var="max=${{ inputs.maxsize }}" -var="desired=${{ inputs.desiresize }}"'
-
-
-    - name: 'Terraform ${{ inputs.action }}'
+        args: >
+          -var="environment=${{ inputs.environment }}" 
+          -var="zones=[${{ inputs.zones }}]" 
+          -var="product=${{ inputs.product }}" 
+          -var="instanceType=${{ inputs.InstanceType }}" 
+          -var="region=${{ inputs.region }}" 
+          -var="min=${{ inputs.minsize }}" 
+          -var="max=${{ inputs.maxsize }}" 
+          -var="desired=${{ inputs.desiresize }}"
+    - name: Terraform Apply/Destroy
       uses: hashicorp/terraform-github-actions@master
       with:
         tf_actions_version: 1.4.0
         tf_actions_subcommand: ${{ inputs.action }}
         tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
-        args: '-var="environment=${{ inputs.environment }}" -var="zones=${{ inputs.zones }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}" -var="min=${{ inputs.minsize }}" -var="max=${{ inputs.maxsize }}" -var="desired=${{ inputs.desiresize }}"'
-
+        args: >
+          -var="environment=${{ inputs.environment }}" 
+          -var="zones=[${{ inputs.zones }}]" 
+          -var="product=${{ inputs.product }}" 
+          -var="instanceType=${{ inputs.InstanceType }}" 
+          -var="region=${{ inputs.region }}" 
+          -var="min=${{ inputs.minsize }}" 
+          -var="max=${{ inputs.maxsize }}" 
+          -var="desired=${{ inputs.desiresize }}"
