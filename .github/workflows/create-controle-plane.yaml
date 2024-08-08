@@ -83,7 +83,6 @@ jobs:
         tf_actions_comment: true
         args: >
           -var="environment=${{ inputs.environment }}" 
-          -var="zones=[${{ inputs.zones }}]" 
           -var="product=${{ inputs.product }}" 
           -var="instanceType=${{ inputs.InstanceType }}" 
           -var="region=${{ inputs.region }}" 
@@ -99,7 +98,6 @@ jobs:
         tf_actions_comment: true
         args: >
           -var="environment=${{ inputs.environment }}" 
-          -var="zones=[${{ inputs.zones }}]" 
           -var="product=${{ inputs.product }}" 
           -var="instanceType=${{ inputs.InstanceType }}" 
           -var="region=${{ inputs.region }}" 
