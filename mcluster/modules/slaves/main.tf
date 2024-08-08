@@ -26,5 +26,7 @@ resource "aws_autoscaling_group" "slave-nodes" {
   min_size = var.min
   desired_capacity = var.desired
   max_size = var.max
+
+  availability_zones = var.zones 
   }
 

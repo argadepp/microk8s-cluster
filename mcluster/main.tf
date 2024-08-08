@@ -13,4 +13,5 @@ module "slaves" {
   min = var.min
   desired = var.desired
   max = var.max
+  zones = var.zones
 }
