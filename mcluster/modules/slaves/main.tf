@@ -27,6 +27,6 @@ resource "aws_autoscaling_group" "slave-nodes" {
   desired_capacity = var.desired
   max_size = var.max
 
-  availability_zones = var.zones 
+  availability_zones = ["ap-south-1a","ap-south-1b"]
   }
 
