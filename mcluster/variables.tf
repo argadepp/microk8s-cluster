@@ -13,3 +13,15 @@ variable "environment" {
 variable "region" {
   default = "ap-south-1"
 }
+
+
+variable "min" {
+}
+
+variable "desired" {
+  
+}
+
+variable "max" {
+  
+}

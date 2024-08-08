@@ -9,3 +9,14 @@ variable "product" {
 variable "environment" {
   type = string
 }
+
+variable "min" {
+}
+
+variable "desired" {
+  
+}
+
+variable "max" {
+  
+}
