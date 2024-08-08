@@ -44,6 +44,15 @@ on:
           - t3.xlarge
           - t3.medium
           - t2.large
+      minsize:
+        type: number
+        description: Min size of asg      
+      desiresize:
+        type: number
+        description: Desired size of asg 
+      maxsize:
+        type: number
+        description: Max size of asg                 
 jobs:
 
   tf_fmt:
@@ -80,7 +89,7 @@ jobs:
         tf_actions_subcommand: 'plan'
         tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
-        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
+        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}" -var="min=${{ inputs.minsize }}" -var="max=${{ inputs.maxsize }}" -var="desired=${{ inputs.desiresize }}"'
 
 
     - name: 'Terraform ${{ inputs.action }}'
@@ -90,5 +99,5 @@ jobs:
         tf_actions_subcommand: ${{ inputs.action }}
         tf_actions_working_dir: 'mcluster'
         tf_actions_comment: true
-        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}"'
+        args: '-var="environment=${{ inputs.environment }}" -var="product=${{ inputs.product }}" -var="instanceType=${{ inputs.InstanceType }}" -var="region=${{ inputs.region }}" -var="min=${{ inputs.minsize }}" -var="max=${{ inputs.maxsize }}" -var="desired=${{ inputs.desiresize }}"'
 
