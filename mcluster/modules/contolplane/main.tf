@@ -16,7 +16,7 @@ resource "aws_instance" "controle-plane" {
     volume_size = 20
   }
   tags = {
-    Name= "${var.product}-${var.environment}-clsuster"
+    Name= "${var.product}-${var.environment}-cluster"
     Environment= "${var.environment}"
     Terraform= true
   }
