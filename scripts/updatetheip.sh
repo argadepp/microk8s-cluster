@@ -1,5 +1,3 @@
-echo "Into the script"
-cat /var/snap/microk8s/current/certs/csr.conf.template
 
 # Define the file location
 file_path="/var/snap/microk8s/current/certs/csr.conf.template"
@@ -20,3 +18,8 @@ awk -v dns="$dynamic_dns" -v ip="$dynamic_ip" '
 # Verify the changes
 echo "Updated $file_path with the following entries:"
 cat "$file_path"
+
+echo "Generating Kubeconfig"
+cat ~/.kube/config
+
+
