@@ -1,6 +1,6 @@
-#!/bin/bash
 
-sudo cat /var/snap/microk8s/current/certs/csr.conf.template
+echo "into the script"
+cat /var/snap/microk8s/current/certs/csr.conf.template
 
 
 # Define the file location
