@@ -110,5 +110,5 @@ jobs:
     - name: Deploy application
       run: |
          IP=(aws ec2 describe-instances --filters "Name=tag:Name,Values=${{ inputs.product }}-${{ inputs.environment }}-cluster" --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
-         echo "IP is "$IP
+         echo "IP is $IP"
 
