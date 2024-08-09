@@ -20,6 +20,6 @@ echo "Updated $file_path with the following entries:"
 cat "$file_path"
 
 echo "Generating Kubeconfig"
-cat ~/.kube/config
+
 
 
