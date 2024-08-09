@@ -21,7 +21,7 @@ on:
           - ap-east-1
       product:
         description: Product
-        default: pdt
+        default: DevOpsTech
       environment:
         type: choice
         description: environment
@@ -41,13 +41,16 @@ on:
           - t2.large
       minsize:
         type: number
-        description: Min size of ASG      
+        description: Min size of ASG  
+        default: 1
       desiresize:
         type: number
         description: Desired size of ASG 
+        default: 1
       maxsize:
         type: number
-        description: Max size of ASG    
+        description: Max size of ASG   
+        default: 5 
       zones:
         type: string
         description: Zones for ASGs (comma-separated)                       
