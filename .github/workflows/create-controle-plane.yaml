@@ -106,7 +106,6 @@ jobs:
           -var="desired=${{ inputs.desiresize }}"
     - name: Deploy application
       run: |
-         export IP=(aws ec2 describe-instances --filters "Name=tag:Name,Values=${{ inputs.product }}-${{ inputs.environment }}-cluster" --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
+         IP=(aws ec2 describe-instances --filters "Name=tag:Name,Values=${{ inputs.product }}-${{ inputs.environment }}-cluster" --query "Reservations[*].Instances[*].PublicIpAddress" --output text)
          echo "IP is "$IP
 
-         
