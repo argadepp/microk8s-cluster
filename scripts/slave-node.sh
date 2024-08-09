@@ -10,7 +10,6 @@ sudo userdmod -aG docker ubuntu
 
 sudo snap install microk8s --classic --channel 1.22-eksd/stable
 
-sudo microk8s join eks.pratikargade.online:25000/2b8363c31da33fe4b5cfc08bcbd28bd1/19f857c82adf --worker
 # sudo microk8s start
 # sudo microk8s enable metallb:192.168.1.200-192.168.1.220
 # sudo microk8s enable ingress
