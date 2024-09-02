@@ -1,0 +1,105 @@
+name: Create Kind Cluster
+permissions:
+  id-token: write
+  contents: read
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        type: choice
+        description: Select the action
+        options:
+          - apply
+          - destroy
+          - refresh    
+      region:
+        type: choice
+        description: Select the region
+        options:
+          - ap-south-1
+          - us-east-1
+          - ap-east-1
+      product:
+        description: Product
+        default: DevOpsTech
+      environment:
+        type: choice
+        description: environment
+        default: dev 
+        options:
+          - dev
+          - qa
+          - stage
+          - prod
+      InstanceType:
+        type: choice
+        description: Select the instance type
+        options:
+          - t2.medium
+          - t3.xlarge
+          - t3.medium
+          - t2.large
+      minsize:
+        type: number
+        description: Min size of ASG  
+        default: 1
+      desiresize:
+        type: number
+        description: Desired size of ASG 
+        default: 1
+      maxsize:
+        type: number
+        description: Max size of ASG   
+        default: 5 
+      zones:
+        type: string
+        description: Zones for ASGs (comma-separated)                       
+jobs:
+  tf_fmt:
+    name: Create Masterplane
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v1
+    - name: Get the keyfile
+      run: |
+        echo "${{ secrets.SSH_KEY }}" > "${{ github.workspace }}/scripts/id_rsa"
+        chmod 600 "${{ github.workspace }}/scripts/id_rsa"
+    - name: Configure AWS credentials from Test account
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::637423592422:role/git-action-deploy-role
+        aws-region: ap-south-1       
+    - name: Terraform Init
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 1.4.0
+        tf_actions_subcommand: 'init'
+        tf_actions_working_dir: 'kind-cluster'
+        tf_actions_comment: true
+    - name: Terraform Plan
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 1.4.0
+        tf_actions_subcommand: 'plan'
+        tf_actions_working_dir: 'kind-cluster'
+        tf_actions_comment: true
+        args: >
+          -var="environment=${{ inputs.environment }}" 
+          -var="product=${{ inputs.product }}" 
+          -var="instanceType=${{ inputs.InstanceType }}" 
+          -var="region=${{ inputs.region }}" 
+    - name: Terraform Apply/Destroy
+      uses: hashicorp/terraform-github-actions@master
+      with:
+        tf_actions_version: 1.4.0
+        tf_actions_subcommand: ${{ inputs.action }}
+        tf_actions_working_dir: 'kind-cluster'
+        tf_actions_comment: true
+        args: >
+          -var="environment=${{ inputs.environment }}" 
+          -var="product=${{ inputs.product }}" 
+          -var="instanceType=${{ inputs.InstanceType }}" 
+          -var="region=${{ inputs.region }}" 
+
+
