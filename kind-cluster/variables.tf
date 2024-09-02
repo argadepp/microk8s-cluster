@@ -9,3 +9,6 @@ variable "product" {
 variable "environment" {
   type = string
 }
+variable "region" {
+  
+}
